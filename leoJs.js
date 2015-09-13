@@ -1,7 +1,7 @@
 /**
- *  @description : 一些常用方法的封装，JS工具库
- *	@author : leo
- *	@createtime : 2015/09/01
+ * @description : 一些常用方法的封装，JS工具库
+ * @author      : leo
+ * @createtime  : 2015/09/01
  */
 
 (function(w){
@@ -122,7 +122,7 @@
     /**
      * 调试用： 获取当前obj里面的东西，一般用于移动端
      * @param  {Object}
-     * @return {Alert}      当前obj里面的东西
+     * @return {Alert}      [当前obj里面的东西]
      */
     var objInfo = function(obj){
         if (obj){
@@ -134,7 +134,7 @@
 
     /**
      * 金额数字处理，允许：正数、负数、正浮点数、负浮点数
-     * 调用 ： 绑定到一个事件，如input，然后 this.value = comm.matchNumber(this.value);
+     * 调用 ： 绑定到一个事件，如input，然后 this.value = leoJs.matchNumber(this.value);
      * 
      * @param  {string}     [要处理的字符串] 
      * 
