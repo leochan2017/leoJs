@@ -1,9 +1,8 @@
-leoJs - a tool for Javascript
-=====================================================
+# leoJs - a tool for Javascript
 伟大的leoJs诞生了 :)
 
 
-# Example codes
+## Example codes
 leoJs.helloWorld();
 
 
