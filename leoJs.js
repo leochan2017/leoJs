@@ -11,6 +11,22 @@
 	}
 
 
+    /**
+     * 检测数组是否存在某个值
+     * @param  {Array}      
+     * @param  {String}     [要检索的值]
+     * @return {number}     [如存在，返回下标；如不存在，返回-1]
+     */
+    var indexOfArray = function(arr, val){
+        for (var i = 0; i < arr.length; i++){
+            if (arr[i] == val){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
 	/**
 	 * 在词后增加3个点
 	 * @param  {Number}    [达到某字节长度则剪掉 中文: 2字节 英文:1字节]
@@ -29,7 +45,7 @@
 	      }else{
 	         a ++ ;
 	      }
-	      if(a > cutLen){
+	      if (a > cutLen){
 	         return temp + '…';
 	      }
 	      temp += str.charAt(i);
@@ -45,8 +61,8 @@
 	 */
 	var getByteLen = function(str){
 	    var bl = 0;
-	    for(var i = 0, l = str.length; i < l ; i++){
-	        if(str.charCodeAt(i) > 255){
+	    for (var i = 0, l = str.length; i < l ; i++){
+	        if (str.charCodeAt(i) > 255){
 	            bl++;
 	        }
 	        bl++;
@@ -126,7 +142,7 @@
      */
     var objInfo = function(obj){
         if (obj){
-            for(i in obj ){
+            for (i in obj ){
                 alert('属性:'+ i + '的值是：\r\n' + obj[i]);           //获得属性
             }
         }
@@ -144,7 +160,7 @@
         var numberRegExp = /(\-?\d+\.\d*)|(\-?\d+\.)|(\-?\d+)|(\-?)/;
         var matches = str.match(numberRegExp);
         var numbers = '';
-        if(matches){
+        if (matches){
             numbers = matches[0];
         }
         return numbers;
@@ -156,15 +172,16 @@
 
     }
 
-	w.leoJs = leoJs;
-	leoJs.helloWorld = helloWorld;
-	leoJs.cutStr = cutStr;
-	leoJs.getByteLen = getByteLen;
-	leoJs.isMobile = isMobile;
+    w.leoJs = leoJs;
+    leoJs.helloWorld = helloWorld;
+    leoJs.indexOfArray = indexOfArray;
+    leoJs.cutStr = cutStr;
+    leoJs.getByteLen = getByteLen;
+    leoJs.isMobile = isMobile;
     leoJs.isAndroid = isAndroid;
-	leoJs.htmlInfo = htmlInfo;
-	leoJs.mbAlertHtml = mbAlertHtml;
-	leoJs.objInfo = objInfo;
-	leoJs.matchNumber = matchNumber;
+    leoJs.htmlInfo = htmlInfo;
+    leoJs.mbAlertHtml = mbAlertHtml;
+    leoJs.objInfo = objInfo;
+    leoJs.matchNumber = matchNumber;
     leoJs.getUrlParam = getUrlParam;
 })(window);
