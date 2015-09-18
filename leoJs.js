@@ -10,6 +10,20 @@
         console.log('Hello Leo !');
     }
 
+    /**
+     * 获取浏览器参
+     * @param  {String} param [要获取的参数名]
+     * @return {String}       [如存在，返回参数的值，不存在返回null]
+     */
+    var getUrlParam = function(param) {
+        var reg = new RegExp("(^|&)" + param + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
+
 
     /**
      * 检测数组是否存在某个值
@@ -166,14 +180,9 @@
         return numbers;
     }
 
-
-    var getUrlParam = function(param) {
-        var param = param || '';
-
-    }
-
     w.leoJs = leoJs;
     leoJs.helloWorld = helloWorld;
+    leoJs.getUrlParam = getUrlParam;
     leoJs.indexOfArray = indexOfArray;
     leoJs.cutStr = cutStr;
     leoJs.getByteLen = getByteLen;
