@@ -6,7 +6,7 @@
 leoJs.helloWorld();
 
 
-## Url
+## Home Page
 http://leochan2017.github.io/leoJs/
 
 
