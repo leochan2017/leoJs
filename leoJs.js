@@ -2,6 +2,7 @@
  * @description : 一些常用方法的封装，JS工具库
  * @author      : leo
  * @createtime  : 2015/09/01
+ * @lastupdate	: 2015/09/30
  */
 
 (function(w) {
@@ -22,6 +23,26 @@
             return unescape(r[2]);
         }
         return null;
+    }
+
+    /**
+     * 获取当前日期和时间
+     * @return {yyyy-MM-dd HH:MM:SS} 2015-09-29 17:29:33
+     */
+    var getNowDateAndTime = function() {
+        var date = new Date();
+        var seperator1 = '-';
+        var seperator2 = ':';
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = '0' + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = '0' + strDate;
+        }
+        var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate + ' ' + date.getHours() + seperator2 + date.getMinutes() + seperator2 + date.getSeconds();
+        return currentdate;
     }
 
 
@@ -183,6 +204,7 @@
     w.leoJs = leoJs;
     leoJs.helloWorld = helloWorld;
     leoJs.getUrlParam = getUrlParam;
+    leoJs.getNowDateAndTime = getNowDateAndTime;
     leoJs.indexOfArray = indexOfArray;
     leoJs.cutStr = cutStr;
     leoJs.getByteLen = getByteLen;
