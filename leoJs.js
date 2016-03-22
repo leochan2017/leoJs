@@ -165,9 +165,9 @@
      * @param  {id}     [当前元素id]
      * @return {Alert}  [当前元素的html]
      */
-    var mbAlertHtml = function(id) {
-        alert($(id).parent().html());
-    }
+    // var mbAlertHtml = function(id) {
+    //     alert(document.getElementById(id).parent().html());
+    // }
 
 
     /**
