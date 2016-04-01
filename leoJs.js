@@ -11,6 +11,8 @@
         console.log('Hello Leo !');
     }
 
+    // hello
+
     /**
      * 获取浏览器参
      * @param  {String} param [要获取的参数名]
