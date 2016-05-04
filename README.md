@@ -3,7 +3,7 @@
 
 
 ## Example codes
-leoJs.helloWorld();
+leo.helloWorld();
 
 
 ## Home Page
