@@ -145,14 +145,14 @@
 
             console.group(param);
 
-            console.info(obj);
+            console.info(JSON.parse(JSON.stringify(obj)));
 
             console.groupEnd();
         }
 
         if (arguments.length == 1) {
             if (typeof param == 'object') {
-                console.info(param);
+                console.info(JSON.parse(JSON.stringify(param)));
                 return;
             }
 
@@ -161,9 +161,8 @@
                 return;
             }
 
-            console.log('%c' + param, 'color:red');
+            console.log('%c' + JSON.parse(JSON.stringify(param)), 'color:red');
         }
-
     };
 
     /**
