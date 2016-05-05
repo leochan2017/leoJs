@@ -20,6 +20,12 @@ http://www.leojs.com
 	@param  String param 要获取的参数名
     @return String       如存在，返回参数的值，不存在返回null
 
+####获取cookie
+	leo.getCookie
+
+	@param  String name 要获取的参数名
+    @return String      返回cookie的值
+
 ####按需加载JS
 	leo.includeJs
 	

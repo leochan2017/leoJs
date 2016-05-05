@@ -28,6 +28,22 @@
     };
 
     /**
+     * [获取cookie]
+     * @param  String name 要获取的参数名
+     * @return String      返回cookie的值
+     */
+    leo.getCookie = function(name) {
+        var arr = [];
+        var reg = new RegExp('(^| )' + name + '=([^;]*)(;|$)');
+
+        if (arr = document.cookie.match(reg)) {
+            return (arr[2]);
+        } else {
+            return null;
+        }
+    };
+
+    /**
      * [按需加载JS]
      * 
      * 骚年，如果你只是想在特定情况下才加载某JS，并在加载成功后执行某些语句，而不是页面加载时尽管用不用的上也一并加载某JS，那么我觉得你需要这个啊，什么？你说require，sea等模块引入可以实现？哈哈我这个非常轻量呀！
