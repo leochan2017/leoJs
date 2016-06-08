@@ -109,6 +109,14 @@ http://leochan2017.github.io/leoJs/
 	leo.matchNumber
 	
 	@param  String     要处理的字符串 
-	调用 ： 绑定到一个事件，如input，然后 this.value = leo.matchNumber(this.value);
+	调用: 绑定到一个事件，如input，然后 this.value = leo.matchNumber(this.value);
 
+####可链式调用的ajax
+	leo.ajax
 
+	调用: 
+	leo.ajax().get('ajaxURL').succ(function(res) { console.log(res) }).fail(function(err) { console.log(err) });
+
+	leo.ajax().post('ajaxURL', JSON.stringify(dataObj)).succ(function(res) { console.log(res) }).fail(function(err) { console.log(err) });
+
+	注: always、succ、fail可连续调用多次，即succ().succ().succ()...

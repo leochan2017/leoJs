@@ -1,8 +1,8 @@
 /**
  * @description : 一些常用方法的封装，JS工具库
- * @author      : leo
+ * @author      : Leo
  * @createtime  : 2015/09/01
- * @lastupdate  : 2016/05/01
+ * @lastupdate  : 2016/06/08
  */
 
 (function(w) {
@@ -328,6 +328,152 @@
         }
         return numbers;
     };
+
+    /**
+     * [可链式调用的ajax]
+     * @param  {[object]} options [初始化参数对象，传入后会替换掉原参数，一般不用传]
+     * 
+     * 链式调用方式：ajax().before([Function]).get|post(url,data).always([Function]).succ([Function]).fail([Function])
+     * 
+     * 注：always、succ、fail可连续调用多次，即succ().succ().succ()...
+     */
+    leo.ajax = function(options) {
+        // 默认初始化参数对象，可悲options替换
+        var _options = {
+            async: true, // 是否异步
+            contentType: 'application/json; charset=utf-8', // POST时，head编码方式，默认json
+            jsonForce: true // 是否强制要求返回格式为json
+        };
+        // 覆盖默认参数对象
+        if (Object.prototype.toString.call(options) == '[object Object]') {
+            for (var pname in options) {
+                _options[pname] = options[pname];
+            }
+        }
+        // 生成xhr对象，懒函数
+        var createXHR = function() {
+            try {
+                xhr = new XMLHttpRequest(); // 直接创建
+                createXHR = function() {
+                    return new XMLHttpRequest()
+                };
+            } catch (e) {
+                try {
+                    xhr = new ActiveXObject('Msxml2.XMLHTTP'); // IE高版本创建XMLHTTP
+                    createXHR = function() {
+                        return new ActiveXObject('Msxml2.XMLHTTP')
+                    };
+                } catch (e) {
+                    try {
+                        xhr = new ActiveXObject('Microsoft.XMLHTTP'); // IE低版本创建XMLHTTP
+                        createXHR = function() {
+                            return new ActiveXObject('Microsoft.XMLHTTP')
+                        };
+                    } catch (e) {
+                        xhr = null;
+                        createXHR = function() {
+                            return null
+                        };
+                    }
+                }
+            }
+            return xhr;
+        }
+        var xhr = createXHR();
+        var doAjax = function(url, data, method) {
+            // 开始执行ajax
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    // 执行always里面的函数
+                    for (var i = 0, l = main.alwaysCallbacks.length; i < l; i++) {
+                        main.alwaysCallbacks[i](xhr.responseText, xhr);
+                    }
+                    // 返回结果转换为json
+                    var resJson;
+                    try {
+                        resJson = JSON.parse(xhr.responseText || null);
+                    } catch (e) {
+                        resJson = undefined;
+                    }
+                    var status = xhr.status;
+                    if (status < 200 || (status >= 300 && status != 304) || (_options.jsonForce && typeof(resJson) === 'undefined')) {
+                        // 执行errCallbacks里面的函数
+                        for (var i = 0, l = main.errCallbacks.length; i < l; i++) {
+                            main.errCallbacks[i](xhr.responseText, xhr);
+                        }
+                    } else {
+                        // 执行sucCallbacks里面的函数
+                        for (var i = 0, l = main.sucCallbacks.length; i < l; i++) {
+                            main.sucCallbacks[i](resJson, xhr);
+                        }
+                    }
+                }
+            }
+            xhr.open(method, url, _options.async);
+            // 如果是post要改变头
+            method === 'POST' && xhr.setRequestHeader('Content-Type', _options.contentType);
+            xhr.send(data || null);
+        }
+
+        var main = {
+            sucCallbacks: [],
+            errCallbacks: [function(err) { console.error('responseText:' + err) }],
+            alwaysCallbacks: [],
+            options: _options,
+            get: function(url, data) {
+                doAjax(url, data, 'GET');
+                return main;
+            },
+            post: function(url, data) {
+                doAjax(url, data, 'POST');
+                return main;
+            }
+        };
+
+        /**
+         * 设置多个请求头
+         * @param  {object} headers
+         */
+        main.headers = function(headers) {
+            if (Object.prototype.toString.call(headers) === '[object Object]') {
+                for (var name in headers) {
+                    console.log(name + ' ' + headers[name]);
+                    console.log(xhr)
+                    xhr.setRequestHeader(name, headers[name]);
+                }
+            }
+        };
+
+        /**
+         * 设置前置处理方法
+         * @param  {Function} callback
+         */
+        main.before = function(callback) {
+            typeof(callback) === 'function' && callback(xhr);
+            return main;
+        };
+
+        /**
+         * 分别是成功、失败、完成的回调函数
+         * @param  {Function} callback [description]
+         */
+        main.succ = function(callback) {
+            typeof(callback) === 'function' && main.sucCallbacks.push(callback);
+            return main;
+        };
+
+        main.fail = function(callback) {
+            typeof(callback) === 'function' && main.errCallbacks.push(callback);
+            return main;
+        };
+
+        main.always = function(callback) {
+            typeof(callback) === 'function' && main.alwaysCallbacks.push(callback);
+            return main;
+        };
+
+        return main;
+    }
 
     w.leo = leo;
 
