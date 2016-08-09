@@ -159,11 +159,11 @@
         if (arguments.length == 2) {
             var obj = arguments[1];
 
-            console.group(param);
+            console.group && console.group(param);
 
             console.info(JSON.parse(JSON.stringify(obj)));
 
-            console.groupEnd();
+            console.groupEnd && console.groupEnd();
         }
 
         if (arguments.length == 1) {
