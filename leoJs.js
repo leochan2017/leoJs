@@ -2,7 +2,8 @@
  * @description : 一些常用方法的封装，JS工具库
  * @author      : Leo
  * @createtime  : 2015/09/01
- * @lastupdate  : 2016/06/08
+ * @lastupdate  : 2016/12/05
+ * @version     : 2.0
  */
 
 (function(w) {
@@ -49,27 +50,39 @@
      * 骚年，如果你只是想在特定情况下才加载某JS，并在加载成功后执行某些语句，而不是页面加载时尽管用不用的上也一并加载某JS，那么我觉得你需要这个啊，什么？你说require，sea等模块引入可以实现？哈哈我这个非常轻量呀！
      * 
      * @param  String   URL         传入需要加载的URL
-     * @param  Function callBackFn  加载成功后需要执行的回调
+     * @param  Function success  加载成功后需要执行的回调
      * 
      */
-    leo.includeJs = function(URL, callBackFn) {
-        var script = document.createElement('script'),
-            head = document.getElementsByTagName('head')[0];
+    leo.includeJs = function(options) {
+        var options = options || {},
+            url = options.url,
+            script = document.createElement('script'),
+            head = document.getElementsByTagName('head')[0],
+            succFn = function() {
+                if (typeof options.success == 'function') {
+                    options.success();
+                }
+            };
+
+        if (typeof url == 'undefined' || url == '' || url == null) {
+            console.error('请正确传入参数: url');
+            return;
+        }
 
         script.type = 'text/javascript';
-        script.src = URL;
+        script.src = url;
         head.appendChild(script);
 
         if (script.readyState) { // IE 
             script.onreadystatechange = function() {
                 if (script.readyState == 'loaded' || script.readyState == 'complete') {
                     script.onreadystatechange = null;
-                    callBackFn();
+                    succFn();
                 }
             };
         } else { // 标准浏览器 
             script.onload = function() {
-                callBackFn();
+                succFn();
             };
         }
     };
@@ -100,7 +113,21 @@
      * 卧槽，能想到的有好多好多，我就不一一举例了，骚年麻烦你看个代码？
      * 
      */
-    leo.dateFormat = function(date, format) {
+    leo.dateFormat = function(options) {
+        var options = options || {},
+            date = options.date,
+            format = options.format;
+
+        if (typeof date == 'undefined' || date == '' || date == null) {
+            console.error('请正确传入参数: date');
+            return;
+        }
+
+        if (typeof format == 'undefined' || format == '' || format == null) {
+            console.error('请正确传入参数: format');
+            return;
+        }
+
         var option = {
             'M+': date.getMonth() + 1, // 月份
             'd+': date.getDate(), // 日
@@ -129,12 +156,12 @@
      * 
      * 不过代码写的有点烂，凑合着先用
      * 注意，使用此接口时，需要先声明：
-     *     window.leoDebug = true; // 是否允许log输出 flase则不允许输出任何调试信息
      *     window.leoType = 1; // 输出的方式 0:alert ,1: console
      * 
      */
     leo.log = function() {
-        if (!window.leoDebug) {
+        if (typeof window.leoType == 'undefined' || window.leoType == '' || window.leoType == null) {
+            console.error('请先声明: window.leoType');
             return;
         }
 
@@ -188,12 +215,27 @@
      * @param  String     要检索的值
      * @return Number     如存在，返回下标；如不存在，返回-1
      */
-    leo.indexOfArray = function(arr, val) {
+    leo.indexOfArray = function(options) {
+        var options = options || {},
+            arr = options.arr,
+            val = options.val;
+
+        if (typeof arr == 'undefined' || arr == '' || arr == null) {
+            console.error('请正确传入参数: arr');
+            return;
+        }
+
+        if (typeof val == 'undefined' || val == '' || val == null) {
+            console.error('请正确传入参数: val');
+            return;
+        }
+
         for (var i = 0; i < arr.length; i++) {
             if (arr[i] == val) {
                 return i;
             }
         }
+
         return -1;
     };
 
@@ -204,25 +246,38 @@
      * @param  String    字符串
      * @return Element   超过长度则返回增加3个点的字符串
      */
-    leo.cutStr = function(cutLen, str) {
-        if (!cutLen) {
-            return '';
+    leo.cutStr = function(options) {
+        var options = options || {},
+            cutLength = options.cutLength,
+            str = options.str,
+            a = 0,
+            temp = '';
+
+        if (typeof cutLength == 'undefined' || cutLength == '' || cutLength == null) {
+            console.error('请正确传入参数: cutLength');
+            return;
         }
-        var a = 0;
-        var temp = '';
+
+        if (typeof str == 'undefined' || str == '' || str == null) {
+            console.error('请正确传入参数: str');
+            return;
+        }
+
         for (var i = 0; i < str.length; i++) {
             if (str.charCodeAt(i) > 255) {
                 a += 2;
             } else {
                 a++;
             }
-            if (a > cutLen) {
+            if (a > cutLength) {
                 return temp + '…';
             }
             temp += str.charAt(i);
         }
+
         return str;
     };
+
 
     /**
      * [获取字符串的字节长度]
@@ -230,8 +285,11 @@
      * @param  String    要获取长度的字符串
      * @return Number    返回str的字节
      */
-    leo.getByteLen = function(str) {
-        var bl = 0;
+    leo.getByteLen = function(options) {
+        var options = options || {},
+            str = options.str || '',
+            bl = 0;
+
         for (var i = 0, l = str.length; i < l; i++) {
             if (str.charCodeAt(i) > 255) {
                 bl++;
@@ -293,8 +351,9 @@
         s += '\r\n屏幕分辨率的宽：' + window.screen.width;
         s += '\r\n屏幕可用工作区高度：' + window.screen.availHeight;
         s += '\r\n屏幕可用工作区宽度：' + window.screen.availWidth;
-        alert(s);
+        console.log(s);
     };
+
 
     /**
      * [调试用: 获取当前obj里面的东东]
@@ -305,7 +364,7 @@
     leo.objInfo = function(obj) {
         if (obj) {
             for (i in obj) {
-                alert('属性:' + i + '的值是：\r\n' + obj[i]); // 获得属性
+                console.log('属性:' + i + '的值是：\r\n' + obj[i]); // 获得属性
             }
         }
     };
