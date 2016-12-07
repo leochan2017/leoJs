@@ -72,30 +72,81 @@ leo.includeJs({
 
 ---
  
-####日期格式化
-	leo.dateFormat
-	
-	@param  Object   date    传入日期
-    
-    @param  String   format  查询季度: leo.dateFormat(new Date(), 'qq')
-    @return String   Return  返回：02
-    
-    @param  String   format  查询年份: leo.dateFormat(new Date(), 'yyyy')
-    @return String   Return  返回：2016
-    
-    @param  String   format  查询年月: leo.dateFormat(new Date(), 'yyyy-MM')
-    @return String   Return  返回：2016-05
-    
-    @param  String   format  查询年月日: leo.dateFormat(new Date(), 'yyyy-MM-dd')
-    @return String   Return  返回：2016-05-01
-    
-    @param  String   format  查询时分秒: leo.dateFormat(new Date(), 'hh:mm:ss')
-    @return String   Return  返回：17:25:12
-    
-    @param  String   format  查询年月日时分秒: leo.dateFormat(new Date(), 'yyyy-MM-dd hh:mm')
-    @return String   Return  返回：2016-05-01 17:25
+####leo.dateFormat
+日期格式化
+
+**调用参数**
+
+| 参数 | 必填 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------:|:-------------|
+| date | true | Date Object | 日期对象 |
+| format | true | String | 格式 |
+
+**返回参数**
+
+| 参数 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------|
+| data | String | 返回格式化后的日期字符串 |
+
+**示例代码**
+```
+// 查询季度
+var qq = leo.dateFormat({
+	date: new Date(),
+	format: 'qq'
+});
+
+// qq: 03
+
+
+// 查询年份
+var year = leo.dateFormat({
+	date: new Date(),
+	format: 'yyyy'
+});
+
+// year: 2016
+
+
+// 查询年月
+var ym = leo.dateFormat({
+	date: new Date(),
+	format: 'yyyy-MM'
+});
+
+// ym: 2016-12
+
+
+// 查询年月日
+var ymd = leo.dateFormat({
+	date: new Date(),
+	format: 'yyyy-MM-dd'
+});
+
+// ymd: 2016-12-07
+
+
+// 查询查询时分秒
+var hms = leo.dateFormat({
+	date: new Date(),
+	format: 'hh:mm:ss'
+});
+
+// hms: 17:25:12
+
+
+// 查询年月日时分
+var ymdhm = leo.dateFormat({
+	date: new Date(),
+	format: 'yyyy-MM-dd hh:mm'
+});
+
+// ymdhm: 2016-12-07 23:25
+
+```
 
 ---
+
 
 ###leo.log(Anything, Anything)
 * 加强console.log显示
