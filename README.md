@@ -220,7 +220,9 @@ if (leo.isAndroid()) {
 ###leo.ajax()
 链式调用的ajax
 
+
 **调用参数**
+
 
 | 方法 | 参数 | 必填 | 类型 | 描述 |
 |:-------------||:-------------:|:-------------:|:-------------|
@@ -236,6 +238,6 @@ if (leo.isAndroid()) {
 leo.ajax().before([Function]).get|post(url, data).always([Function]).succ([Function]).fail([Function])
 ```
 
-**注: always、succ、fail可连续调用多次，即succ().succ().succ()... **
+**注: always、succ、fail可连续调用多次，即succ().succ().succ()...**
 
 ---
