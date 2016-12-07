@@ -16,24 +16,62 @@ http://leochan2017.github.io/leoJs/
 ---
 ##API列表
 
-####获取浏览器参
-	leo.getUrlParam
-	
-	@param  String param 要获取的参数名
-    @return String       如存在，返回参数的值，不存在返回null
+####leo.getUrlParam(String)
+获取浏览器参数
 
-####获取cookie
-	leo.getCookie
+** 调用参数 **
 
-	@param  String name 要获取的参数名
-    @return String      返回cookie的值
+| 参数 | 必填 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------:|:-------------|
+| Param | true | String | 需要获取的浏览器参数的Key |
 
-####按需加载JS
-	leo.includeJs
-	
-	@param  String   URL         传入需要加载的URL
-    @param  Function callBackFn  加载成功后需要执行的回调
-    
+** 返回参数 **
+
+| 参数 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------|
+| data | String | 获取的浏览器参数的Value |
+
+---
+
+####leo.getCookie
+获取cookie
+
+** 调用参数 **
+
+| 参数 | 必填 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------:|:-------------|
+| Param | true | String | 要获取的参数名 |
+
+** 返回参数 **
+
+| 参数 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------|
+| data | String | 返回cookie的值 |
+
+---
+
+####leo.includeJs(Object)
+按需加载JS
+
+** 调用参数 **
+
+| 参数 | 必填 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------:|:-------------|
+| url | true | String | 传入需要加载的URL |
+| succ | false | Function | JS加载成功执行回调 |
+
+#####示例代码:
+```
+leo.includeJs({
+	url: 'http://www.leojs.com/leojs.js',
+	succ: function() {
+		console.log('加载成功');
+	}
+});
+```
+
+---
+ 
 ####日期格式化
 	leo.dateFormat
 	
@@ -57,19 +95,55 @@ http://leochan2017.github.io/leoJs/
     @param  String   format  查询年月日时分秒: leo.dateFormat(new Date(), 'yyyy-MM-dd hh:mm')
     @return String   Return  返回：2016-05-01 17:25
 
-####据说很好看，很方便的调试神器
-	leo.log
-	
-	注意，使用此接口时，需要先声明：
-	window.leoDebug = true; // 是否允许log输出 flase则不允许输出任何调试信息
-	window.leoType = 1; // 输出的方式 0:alert ,1: console
+---
 
-####检测数组是否存在某个值
-	leo.indexOfArray
-	
-	@param  Array      
-    @param  String     要检索的值
-    @return Number     如存在，返回下标；如不存在，返回-1
+###leo.log(Anything, Anything)
+* 加强console.log显示
+* 移动端调试不方便时可以转为alert弹出log内容
+* 允许传入参数为1~2个
+
+** 调用参数 **
+
+| 参数 | 必填 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------:|:-------------|
+| window.leoType | true | Number | 调试显示的类型，只需整个程序中声明一次即可，0为alert，1为console |
+| Param1 | false | Anything | 需要打印的内容 |
+| Param2 | false | Anything | 需要打印的内容 |
+
+#####示例代码:
+```
+window.leoType = 0; // 只需声明一次
+leo.log('XXX接口返回', res);
+```
+
+---
+
+####leo.indexOfArray()
+检测数组是否存在某个值
+
+** 调用参数 **
+
+| 参数 | 必填 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------:|:-------------|
+| array | true | Array | 待检测数组 |
+| value | true | String | 要检测的值 |
+
+** 返回参数 **
+
+| 参数 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------|
+| data | Number | 如存在，返回下标；如不存在，返回-1 |
+
+
+#####示例代码:
+```
+leo.indexOfArray({
+    array: ['leo', 'jack', 'tom'],
+    value: 'tom'
+});
+```
+
+---
     
 ####在词后增加3个省略点
 	leo.cutStr
@@ -84,15 +158,45 @@ http://leochan2017.github.io/leoJs/
 	@param  String    要获取长度的字符串
 	@return Number    返回str的字节
 	
-####判断当前环境是否移动端
-	leo.isMobile
+---
+
+####leo.isMobile()
+判断当前运行环境是否移动端
+
+** 返回参数 **
+
+| 参数 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------|
+| data | Boolean | true: 移动端, false: 非移动端 |
+
+
+#####示例代码:
+```
+if (leo.isMobile()) {
+	console.log('当前是移动端环境');
+}
+```
 	
-	@return Boolean [true : 是移动端， flase : 非移动端]
-	
-####判断当前环境是否Android
-	leo.isAndroid
-	
-	@return Boolean [true ：是Android ; false ：爱疯或其他]
+---
+
+####leo.isAndroid()
+判断当前运行是否安卓环境
+
+** 返回参数 **
+
+| 参数 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------|
+| data | Boolean | true: 安卓, false: 非安卓 |
+
+
+#####示例代码:
+```
+if (leo.isAndroid()) {
+	console.log('当前是安卓环境');
+}
+```
+
+---
 	
 ####调试用: 获取当前设备的网页信息
 	leo.htmlInfo
@@ -111,12 +215,27 @@ http://leochan2017.github.io/leoJs/
 	@param  String     要处理的字符串 
 	调用: 绑定到一个事件，如input，然后 this.value = leo.matchNumber(this.value);
 
-####可链式调用的ajax
-	leo.ajax
+---
 
-	调用: 
-	leo.ajax().get('ajaxURL').succ(function(res) { console.log(res) }).fail(function(err) { console.log(err) });
+###leo.ajax()
+链式调用的ajax
 
-	leo.ajax().post('ajaxURL', JSON.stringify(dataObj)).succ(function(res) { console.log(res) }).fail(function(err) { console.log(err) });
+** 调用参数 **
 
-	注: always、succ、fail可连续调用多次，即succ().succ().succ()...
+| 方法 | 参数 | 必填 | 类型 | 描述 |
+|:-------------||:-------------:|:-------------:|:-------------|
+| get | url, data | true | String, Object | 请求URL, 请求参数， Get请求可以在URL上带上参数，那么第二个参数就可以不传了 |
+| post | url, data | true | String, Object | 请求URL, 请求参数 |
+| before | Function | false | Function | 请求前置处理回调 |
+| succ | Function | false | Function | 请求成功回调 |
+| fail | Function | false | Function | 请求失败回调 |
+
+
+#####示例代码:
+```
+leo.ajax().before([Function]).get|post(url, data).always([Function]).succ([Function]).fail([Function])
+```
+
+*** 注: always、succ、fail可连续调用多次，即succ().succ().succ()... ***
+
+---
