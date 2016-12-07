@@ -33,7 +33,7 @@ http://leochan2017.github.io/leoJs/
 
 ---
 
-####leo.getCookie
+####leo.getCookie(String)
 获取cookie
 
 **调用参数**
@@ -60,7 +60,7 @@ http://leochan2017.github.io/leoJs/
 | url | true | String | 传入需要加载的URL |
 | succ | false | Function | JS加载成功执行回调 |
 
-#####示例代码:
+**示例代码**
 ```
 leo.includeJs({
 	url: 'http://www.leojs.com/leojs.js',
@@ -72,7 +72,7 @@ leo.includeJs({
 
 ---
  
-####leo.dateFormat
+####leo.dateFormat(Object)
 日期格式化
 
 **调用参数**
@@ -161,7 +161,7 @@ var ymdhm = leo.dateFormat({
 | Param1 | false | Anything | 需要打印的内容 |
 | Param2 | false | Anything | 需要打印的内容 |
 
-#####示例代码:
+**示例代码**
 ```
 window.leoType = 0; // 只需声明一次
 leo.log('XXX接口返回', res);
@@ -169,7 +169,7 @@ leo.log('XXX接口返回', res);
 
 ---
 
-####leo.indexOfArray()
+####leo.indexOfArray(Object)
 检测数组是否存在某个值
 
 **调用参数**
@@ -186,7 +186,7 @@ leo.log('XXX接口返回', res);
 | data | Number | 如存在，返回下标；如不存在，返回-1 |
 
 
-#####示例代码:
+**示例代码**
 ```
 leo.indexOfArray({
     array: ['leo', 'jack', 'tom'],
@@ -196,20 +196,56 @@ leo.indexOfArray({
 
 ---
     
-####在词后增加3个省略点
-	leo.cutStr
-	
-	@param  Number    达到某字节长度则剪掉 中文: 2字节 英文:1字节
-    @param  String    字符串
-    @return Element   超过长度则返回增加3个点的字符串
-    
-####获取字符串的字节长度
-	leo.getByteLen
-	
-	@param  String    要获取长度的字符串
-	@return Number    返回str的字节
-	
+####leo.cutStr(String)
+在词后增加3个省略点
+
+**调用参数**
+
+| 参数 | 必填 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------:|:-------------|
+| cutLength | true | Number | 达到某字节长度则剪掉 中文: 2字节 英文:1字节 |
+| str | true | String | 要处理的字符串 |
+
+**返回参数**
+
+| 参数 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------|
+| data | String | 超过长度则返回增加3个点的字符串 |
+
+
+**示例代码**
+
+```
+var s = leo.cutStr({cutLength:3,str:'asdfghkl'});
+```
+
 ---
+
+    
+####leo.getByteLen(String)
+获取字符串的字节长度
+
+**调用参数**
+
+| 参数 | 必填 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------:|:-------------|
+| str | true | String | 要处理的字符串 |
+
+**返回参数**
+
+| 参数 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------|
+| data | Number | 返回str的字节 |
+
+
+**示例代码**
+
+```
+var len = leo.getByteLen({str:'jjhjkhkjhjk'})
+```
+
+---
+
 
 ####leo.isMobile()
 判断当前运行环境是否移动端
@@ -221,7 +257,8 @@ leo.indexOfArray({
 | data | Boolean | true: 移动端, false: 非移动端 |
 
 
-#####示例代码:
+**示例代码**
+
 ```
 if (leo.isMobile()) {
 	console.log('当前是移动端环境');
@@ -240,7 +277,8 @@ if (leo.isMobile()) {
 | data | Boolean | true: 安卓, false: 非安卓 |
 
 
-#####示例代码:
+**示例代码**
+
 ```
 if (leo.isAndroid()) {
 	console.log('当前是安卓环境');
@@ -260,11 +298,12 @@ if (leo.isAndroid()) {
 	@param  Object
 	@return Alert      当前obj里面的东东
 	
-####金额数字处理，允许: 正数、负数、正浮点数、负浮点数
-	leo.matchNumber
+####leo.matchNumber(String)
+金额数字处理，允许: 正数、负数、正浮点数、负浮点数
 	
 	@param  String     要处理的字符串 
-	调用: 绑定到一个事件，如input，然后 this.value = leo.matchNumber(this.value);
+
+**注: 绑定到一个事件，如input，然后 this.value = leo.matchNumber(this.value);**
 
 ---
 
@@ -284,7 +323,8 @@ if (leo.isAndroid()) {
 | fail | Function | false | Function | 请求失败回调 |
 
 
-#####示例代码:
+**示例代码**
+
 ```
 leo.ajax().before([Function]).get|post(url, data).always([Function]).succ([Function]).fail([Function])
 ```
