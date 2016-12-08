@@ -89,6 +89,7 @@ leo.includeJs({
 | data | String | 返回格式化后的日期字符串 |
 
 **示例代码**
+
 ```
 // 查询季度
 var qq = leo.dateFormat({
@@ -162,6 +163,7 @@ var ymdhm = leo.dateFormat({
 | Param2 | false | Anything | 需要打印的内容 |
 
 **示例代码**
+
 ```
 window.leoType = 0; // 只需声明一次
 leo.log('XXX接口返回', res);
@@ -187,6 +189,7 @@ leo.log('XXX接口返回', res);
 
 
 **示例代码**
+
 ```
 leo.indexOfArray({
     array: ['leo', 'jack', 'tom'],
@@ -287,21 +290,38 @@ if (leo.isAndroid()) {
 
 ---
 	
-####调试用: 获取当前设备的网页信息
-	leo.htmlInfo
+####leo.htmlInfo
+调试用，获取当前的网页信息
+
+**返回参数**
+
+| 参数 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------|
+| data | console.log | 网页可见区域高，网页可见区域高，网页可见区域高，网页正文全文宽，网页正文全文高，网页被卷去的高，网页被卷去的左，网页正文部分上，网页正文部分左，屏幕分辨率的高，屏幕分辨率的宽，屏幕可用工作区高度，屏幕可用工作区宽度 |
+
+---
 	
-	@return Alert 当前的网页信息
-	
-####调试用: 获取当前obj里面的东东
-	leo.objInfo
-	
-	@param  Object
-	@return Alert      当前obj里面的东东
+####leo.objInfo(Object)
+调试用，获取当前obj里面的信息
+
+**调用参数**
+
+| 参数 | 必填 | 类型 | 描述 |
+|:-------------|:-------------:|:-------------:|:-------------|
+| Object | true | Object | 需要查看的Object |
+
+**返回参数**
+
+| 参数 | 类型 | 描述 |
+|:-------------|:-------------:|:------------|
+| data | console.log | 返回Object的key，value |
+
+---
 	
 ####leo.matchNumber(String)
 金额数字处理，允许: 正数、负数、正浮点数、负浮点数
-	
-	@param  String     要处理的字符串 
+
+
 
 **注: 绑定到一个事件，如input，然后 this.value = leo.matchNumber(this.value);**
 
