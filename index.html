@@ -50,139 +50,646 @@
 <h2>
 <a id="api列表" class="anchor" href="#api%E5%88%97%E8%A1%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API列表</h2>
 
-<h4>
-<a id="获取浏览器参" class="anchor" href="#%E8%8E%B7%E5%8F%96%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%82" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>获取浏览器参</h4>
+<h3>
+<a id="leogeturlparamstring" class="anchor" href="#leogeturlparamstring" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.getUrlParam(String)</h3>
 
-<pre><code>leo.getUrlParam
+<p>获取浏览器参数</p>
 
-@param  String param 要获取的参数名
-@return String       如存在，返回参数的值，不存在返回null
+<p><strong>调用参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">必填</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Param</td>
+<td align="center">true</td>
+<td align="center">String</td>
+<td align="left">需要获取的浏览器参数的Key</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>返回参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data</td>
+<td align="center">String</td>
+<td align="left">获取的浏览器参数的Value</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h3>
+<a id="leogetcookiestring" class="anchor" href="#leogetcookiestring" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.getCookie(String)</h3>
+
+<p>获取cookie</p>
+
+<p><strong>调用参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">必填</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Param</td>
+<td align="center">true</td>
+<td align="center">String</td>
+<td align="left">要获取的参数名</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>返回参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data</td>
+<td align="center">String</td>
+<td align="left">返回cookie的值</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h3>
+<a id="leoincludejsobject" class="anchor" href="#leoincludejsobject" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.includeJs(Object)</h3>
+
+<p>按需加载JS</p>
+
+<p><strong>调用参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">必填</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">url</td>
+<td align="center">true</td>
+<td align="center">String</td>
+<td align="left">传入需要加载的URL</td>
+</tr>
+<tr>
+<td align="left">succ</td>
+<td align="center">false</td>
+<td align="center">Function</td>
+<td align="left">JS加载成功执行回调</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>示例代码</strong></p>
+
+<pre><code>leo.includeJs({
+    url: 'http://www.leojs.com/leojs.js',
+    succ: function() {
+        console.log('加载成功');
+    }
+});
 </code></pre>
 
-<h4>
-<a id="获取cookie" class="anchor" href="#%E8%8E%B7%E5%8F%96cookie" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>获取cookie</h4>
+<hr>
 
-<pre><code>leo.getCookie
+<h3>
+<a id="leodateformatobject" class="anchor" href="#leodateformatobject" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.dateFormat(Object)</h3>
 
-@param  String name 要获取的参数名
-@return String      返回cookie的值
+<p>日期格式化</p>
+
+<p><strong>调用参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">必填</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">date</td>
+<td align="center">true</td>
+<td align="center">Date Object</td>
+<td align="left">日期对象</td>
+</tr>
+<tr>
+<td align="left">format</td>
+<td align="center">true</td>
+<td align="center">String</td>
+<td align="left">格式</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>返回参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data</td>
+<td align="center">String</td>
+<td align="left">返回格式化后的日期字符串</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>示例代码</strong></p>
+
+<pre><code>// 查询季度
+var qq = leo.dateFormat({
+    date: new Date(),
+    format: 'qq'
+});
+
+// qq: 03
+
+
+// 查询年份
+var year = leo.dateFormat({
+    date: new Date(),
+    format: 'yyyy'
+});
+
+// year: 2016
+
+
+// 查询年月
+var ym = leo.dateFormat({
+    date: new Date(),
+    format: 'yyyy-MM'
+});
+
+// ym: 2016-12
+
+
+// 查询年月日
+var ymd = leo.dateFormat({
+    date: new Date(),
+    format: 'yyyy-MM-dd'
+});
+
+// ymd: 2016-12-07
+
+
+// 查询查询时分秒
+var hms = leo.dateFormat({
+    date: new Date(),
+    format: 'hh:mm:ss'
+});
+
+// hms: 17:25:12
+
+
+// 查询年月日时分
+var ymdhm = leo.dateFormat({
+    date: new Date(),
+    format: 'yyyy-MM-dd hh:mm'
+});
+
+// ymdhm: 2016-12-07 23:25
+
 </code></pre>
 
-<h4>
-<a id="按需加载js" class="anchor" href="#%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BDjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>按需加载JS</h4>
+<hr>
 
-<pre><code>leo.includeJs
+<h3>
+<a id="leologanything-anything" class="anchor" href="#leologanything-anything" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.log(Anything, Anything)</h3>
 
-@param  String   URL         传入需要加载的URL
-@param  Function callBackFn  加载成功后需要执行的回调
+<ul>
+<li>加强console.log显示</li>
+<li>移动端调试不方便时可以转为alert弹出log内容</li>
+<li>允许传入参数为1~2个</li>
+</ul>
+
+<p><strong>调用参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">必填</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">window.leoType</td>
+<td align="center">true</td>
+<td align="center">Number</td>
+<td align="left">调试显示的类型，只需整个程序中声明一次即可，0为alert，1为console</td>
+</tr>
+<tr>
+<td align="left">Param1</td>
+<td align="center">false</td>
+<td align="center">Anything</td>
+<td align="left">需要打印的内容</td>
+</tr>
+<tr>
+<td align="left">Param2</td>
+<td align="center">false</td>
+<td align="center">Anything</td>
+<td align="left">需要打印的内容</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>示例代码</strong></p>
+
+<pre><code>window.leoType = 0; // 只需声明一次
+leo.log('XXX接口返回', res);
 </code></pre>
 
-<h4>
-<a id="日期格式化" class="anchor" href="#%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>日期格式化</h4>
+<hr>
 
-<pre><code>leo.dateFormat
+<h3>
+<a id="leoindexofarrayobject" class="anchor" href="#leoindexofarrayobject" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.indexOfArray(Object)</h3>
 
-@param  Object   date    传入日期
+<p>检测数组是否存在某个值</p>
 
-@param  String   format  查询季度: leo.dateFormat(new Date(), 'qq')
-@return String   Return  返回：02
+<p><strong>调用参数</strong></p>
 
-@param  String   format  查询年份: leo.dateFormat(new Date(), 'yyyy')
-@return String   Return  返回：2016
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">必填</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">array</td>
+<td align="center">true</td>
+<td align="center">Array</td>
+<td align="left">待检测数组</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="center">true</td>
+<td align="center">String</td>
+<td align="left">要检测的值</td>
+</tr>
+</tbody>
+</table>
 
-@param  String   format  查询年月: leo.dateFormat(new Date(), 'yyyy-MM')
-@return String   Return  返回：2016-05
+<p><strong>返回参数</strong></p>
 
-@param  String   format  查询年月日: leo.dateFormat(new Date(), 'yyyy-MM-dd')
-@return String   Return  返回：2016-05-01
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data</td>
+<td align="center">Number</td>
+<td align="left">如存在，返回下标；如不存在，返回-1</td>
+</tr>
+</tbody>
+</table>
 
-@param  String   format  查询时分秒: leo.dateFormat(new Date(), 'hh:mm:ss')
-@return String   Return  返回：17:25:12
+<p><strong>示例代码</strong></p>
 
-@param  String   format  查询年月日时分秒: leo.dateFormat(new Date(), 'yyyy-MM-dd hh:mm')
-@return String   Return  返回：2016-05-01 17:25
+<pre><code>leo.indexOfArray({
+    array: ['leo', 'jack', 'tom'],
+    value: 'tom'
+});
 </code></pre>
 
-<h4>
-<a id="据说很好看很方便的调试神器" class="anchor" href="#%E6%8D%AE%E8%AF%B4%E5%BE%88%E5%A5%BD%E7%9C%8B%E5%BE%88%E6%96%B9%E4%BE%BF%E7%9A%84%E8%B0%83%E8%AF%95%E7%A5%9E%E5%99%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>据说很好看，很方便的调试神器</h4>
+<hr>
 
-<pre><code>leo.log
+<h3>
+<a id="leocutstrstring" class="anchor" href="#leocutstrstring" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.cutStr(String)</h3>
 
-注意，使用此接口时，需要先声明：
-window.leoDebug = true; // 是否允许log输出 flase则不允许输出任何调试信息
-window.leoType = 1; // 输出的方式 0:alert ,1: console
+<p>超出指定长度则在词后增加3个省略点</p>
+
+<p><strong>调用参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">必填</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">cutLength</td>
+<td align="center">true</td>
+<td align="center">Number</td>
+<td align="left">达到某字节长度则剪掉 中文: 2字节 英文:1字节</td>
+</tr>
+<tr>
+<td align="left">str</td>
+<td align="center">true</td>
+<td align="center">String</td>
+<td align="left">要处理的字符串</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>返回参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data</td>
+<td align="center">String</td>
+<td align="left">超过长度则返回增加3个点的字符串</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>示例代码</strong></p>
+
+<pre><code>var s = leo.cutStr({cutLength:3,str:'asdfghkl'});
 </code></pre>
 
-<h4>
-<a id="检测数组是否存在某个值" class="anchor" href="#%E6%A3%80%E6%B5%8B%E6%95%B0%E7%BB%84%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%9F%90%E4%B8%AA%E5%80%BC" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>检测数组是否存在某个值</h4>
+<hr>
 
-<pre><code>leo.indexOfArray
+<h3>
+<a id="leogetbytelenstring" class="anchor" href="#leogetbytelenstring" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.getByteLen(String)</h3>
 
-@param  Array      
-@param  String     要检索的值
-@return Number     如存在，返回下标；如不存在，返回-1
+<p>获取字符串的字节长度</p>
+
+<p><strong>调用参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">必填</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">str</td>
+<td align="center">true</td>
+<td align="center">String</td>
+<td align="left">要处理的字符串</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>返回参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data</td>
+<td align="center">Number</td>
+<td align="left">返回str的字节</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>示例代码</strong></p>
+
+<pre><code>var len = leo.getByteLen({str:'jjhjkhkjhjk'})
 </code></pre>
 
-<h4>
-<a id="在词后增加3个省略点" class="anchor" href="#%E5%9C%A8%E8%AF%8D%E5%90%8E%E5%A2%9E%E5%8A%A03%E4%B8%AA%E7%9C%81%E7%95%A5%E7%82%B9" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>在词后增加3个省略点</h4>
+<hr>
 
-<pre><code>leo.cutStr
+<h3>
+<a id="leoismobile" class="anchor" href="#leoismobile" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.isMobile()</h3>
 
-@param  Number    达到某字节长度则剪掉 中文: 2字节 英文:1字节
-@param  String    字符串
-@return Element   超过长度则返回增加3个点的字符串
+<p>判断当前运行环境是否移动端</p>
+
+<p><strong>返回参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data</td>
+<td align="center">Boolean</td>
+<td align="left">true: 移动端, false: 非移动端</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>示例代码</strong></p>
+
+<pre><code>if (leo.isMobile()) {
+    console.log('当前是移动端环境');
+}
 </code></pre>
 
-<h4>
-<a id="获取字符串的字节长度" class="anchor" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%97%E8%8A%82%E9%95%BF%E5%BA%A6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>获取字符串的字节长度</h4>
+<hr>
 
-<pre><code>leo.getByteLen
+<h3>
+<a id="leoisandroid" class="anchor" href="#leoisandroid" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.isAndroid()</h3>
 
-@param  String    要获取长度的字符串
-@return Number    返回str的字节
+<p>判断当前运行是否安卓环境</p>
+
+<p><strong>返回参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data</td>
+<td align="center">Boolean</td>
+<td align="left">true: 安卓, false: 非安卓</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>示例代码</strong></p>
+
+<pre><code>if (leo.isAndroid()) {
+    console.log('当前是安卓环境');
+}
 </code></pre>
 
-<h4>
-<a id="判断当前环境是否移动端" class="anchor" href="#%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8D%E7%8E%AF%E5%A2%83%E6%98%AF%E5%90%A6%E7%A7%BB%E5%8A%A8%E7%AB%AF" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>判断当前环境是否移动端</h4>
+<hr>
 
-<pre><code>leo.isMobile
+<h3>
+<a id="leohtmlinfo" class="anchor" href="#leohtmlinfo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.htmlInfo</h3>
 
-@return Boolean [true : 是移动端， flase : 非移动端]
+<p>调试用，获取当前的网页信息</p>
+
+<p><strong>返回参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data</td>
+<td align="center">console.log</td>
+<td align="left">网页可见区域高，网页可见区域高，网页可见区域高，网页正文全文宽，网页正文全文高，网页被卷去的高，网页被卷去的左，网页正文部分上，网页正文部分左，屏幕分辨率的高，屏幕分辨率的宽，屏幕可用工作区高度，屏幕可用工作区宽度</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h3>
+<a id="leoobjinfoobject" class="anchor" href="#leoobjinfoobject" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.objInfo(Object)</h3>
+
+<p>调试用，获取当前obj里面的信息</p>
+
+<p><strong>调用参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">必填</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Object</td>
+<td align="center">true</td>
+<td align="center">Object</td>
+<td align="left">需要查看的Object</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>返回参数</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data</td>
+<td align="center">console.log</td>
+<td align="left">返回Object的key，value</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h3>
+<a id="leomatchnumberstring" class="anchor" href="#leomatchnumberstring" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.matchNumber(String)</h3>
+
+<p>金额数字处理，允许: 正数、负数、正浮点数、负浮点数</p>
+
+<p><strong>注: 绑定到一个事件，如input，然后 this.value = leo.matchNumber(this.value);</strong></p>
+
+<hr>
+
+<h3>
+<a id="leoajax" class="anchor" href="#leoajax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>leo.ajax()</h3>
+
+<p>链式调用的ajax</p>
+
+<p><strong>调用参数</strong></p>
+
+<p>| 方法 | 参数 | 必填 | 类型 | 描述 |
+|:-------------||:-------------:|:-------------:|:-------------|
+| get | url, data | true | String, Object | 请求URL, 请求参数， Get请求可以在URL上带上参数，那么第二个参数就可以不传了 |
+| post | url, data | true | String, Object | 请求URL, 请求参数 |
+| before | Function | false | Function | 请求前置处理回调 |
+| succ | Function | false | Function | 请求成功回调 |
+| fail | Function | false | Function | 请求失败回调 |</p>
+
+<p><strong>示例代码</strong></p>
+
+<pre><code>leo.ajax().before([Function]).get|post(url, data).always([Function]).succ([Function]).fail([Function])
 </code></pre>
 
-<h4>
-<a id="判断当前环境是否android" class="anchor" href="#%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8D%E7%8E%AF%E5%A2%83%E6%98%AF%E5%90%A6android" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>判断当前环境是否Android</h4>
+<p><strong>注: always、succ、fail可连续调用多次，即succ().succ().succ()...</strong></p>
 
-<pre><code>leo.isAndroid
-
-@return Boolean [true ：是Android ; false ：爱疯或其他]
-</code></pre>
-
-<h4>
-<a id="调试用-获取当前设备的网页信息" class="anchor" href="#%E8%B0%83%E8%AF%95%E7%94%A8-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>调试用: 获取当前设备的网页信息</h4>
-
-<pre><code>leo.htmlInfo
-
-@return Alert 当前的网页信息
-</code></pre>
-
-<h4>
-<a id="调试用-获取当前obj里面的东东" class="anchor" href="#%E8%B0%83%E8%AF%95%E7%94%A8-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8Dobj%E9%87%8C%E9%9D%A2%E7%9A%84%E4%B8%9C%E4%B8%9C" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>调试用: 获取当前obj里面的东东</h4>
-
-<pre><code>leo.objInfo
-
-@param  Object
-@return Alert      当前obj里面的东东
-</code></pre>
-
-<h4>
-<a id="金额数字处理允许-正数负数正浮点数负浮点数" class="anchor" href="#%E9%87%91%E9%A2%9D%E6%95%B0%E5%AD%97%E5%A4%84%E7%90%86%E5%85%81%E8%AE%B8-%E6%AD%A3%E6%95%B0%E8%B4%9F%E6%95%B0%E6%AD%A3%E6%B5%AE%E7%82%B9%E6%95%B0%E8%B4%9F%E6%B5%AE%E7%82%B9%E6%95%B0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>金额数字处理，允许: 正数、负数、正浮点数、负浮点数</h4>
-
-<pre><code>leo.matchNumber
-
-@param  String     要处理的字符串 
-调用 ： 绑定到一个事件，如input，然后 this.value = leo.matchNumber(this.value);
-</code></pre>
+<hr>
       </section>
     </div>
 
