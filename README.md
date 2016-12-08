@@ -16,7 +16,7 @@ http://leochan2017.github.io/leoJs/
 ---
 ##API列表
 
-####leo.getUrlParam(String)
+###leo.getUrlParam(String)
 获取浏览器参数
 
 **调用参数**
@@ -33,7 +33,7 @@ http://leochan2017.github.io/leoJs/
 
 ---
 
-####leo.getCookie(String)
+###leo.getCookie(String)
 获取cookie
 
 **调用参数**
@@ -50,7 +50,7 @@ http://leochan2017.github.io/leoJs/
 
 ---
 
-####leo.includeJs(Object)
+###leo.includeJs(Object)
 按需加载JS
 
 **调用参数**
@@ -61,6 +61,7 @@ http://leochan2017.github.io/leoJs/
 | succ | false | Function | JS加载成功执行回调 |
 
 **示例代码**
+
 ```
 leo.includeJs({
 	url: 'http://www.leojs.com/leojs.js',
@@ -72,7 +73,7 @@ leo.includeJs({
 
 ---
  
-####leo.dateFormat(Object)
+###leo.dateFormat(Object)
 日期格式化
 
 **调用参数**
@@ -171,7 +172,7 @@ leo.log('XXX接口返回', res);
 
 ---
 
-####leo.indexOfArray(Object)
+###leo.indexOfArray(Object)
 检测数组是否存在某个值
 
 **调用参数**
@@ -199,8 +200,8 @@ leo.indexOfArray({
 
 ---
     
-####leo.cutStr(String)
-在词后增加3个省略点
+###leo.cutStr(String)
+超出指定长度则在词后增加3个省略点
 
 **调用参数**
 
@@ -225,7 +226,7 @@ var s = leo.cutStr({cutLength:3,str:'asdfghkl'});
 ---
 
     
-####leo.getByteLen(String)
+###leo.getByteLen(String)
 获取字符串的字节长度
 
 **调用参数**
@@ -250,7 +251,7 @@ var len = leo.getByteLen({str:'jjhjkhkjhjk'})
 ---
 
 
-####leo.isMobile()
+###leo.isMobile()
 判断当前运行环境是否移动端
 
 **返回参数**
@@ -270,7 +271,7 @@ if (leo.isMobile()) {
 	
 ---
 
-####leo.isAndroid()
+###leo.isAndroid()
 判断当前运行是否安卓环境
 
 **返回参数**
@@ -290,7 +291,7 @@ if (leo.isAndroid()) {
 
 ---
 	
-####leo.htmlInfo
+###leo.htmlInfo
 调试用，获取当前的网页信息
 
 **返回参数**
@@ -301,7 +302,7 @@ if (leo.isAndroid()) {
 
 ---
 	
-####leo.objInfo(Object)
+###leo.objInfo(Object)
 调试用，获取当前obj里面的信息
 
 **调用参数**
@@ -318,7 +319,7 @@ if (leo.isAndroid()) {
 
 ---
 	
-####leo.matchNumber(String)
+###leo.matchNumber(String)
 金额数字处理，允许: 正数、负数、正浮点数、负浮点数
 
 
